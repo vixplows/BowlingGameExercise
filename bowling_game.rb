@@ -14,7 +14,10 @@ class BowlingGame
     roll_index = 0
 
     10.times do
-      if spare?(roll_index)
+      if strike?(roll_index)
+        insert_nil_after_strike(roll_index)
+        score_log += strike_score(roll_index)
+      elsif spare?(roll_index)
         score_log += spare_score(roll_index)
       else
         score_log += @rolls[roll_index] + @rolls[roll_index + 1] 
@@ -22,6 +25,21 @@ class BowlingGame
       roll_index += 2
     end
     @score = score_log
+  end
+
+  private
+  def strike?(roll_index)
+    @rolls[roll_index] == 10
+  end
+
+  private
+  def strike_score(roll_index)
+    @rolls[roll_index] + @rolls[roll_index + 2] + @rolls[roll_index + 3]
+  end
+
+  private
+  def insert_nil_after_strike(roll_index)
+    @rolls.insert(roll_index + 1, nil)
   end
 
   private

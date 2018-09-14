@@ -27,7 +27,20 @@ class TestBowlingGame < Minitest::Test
   end
 
   def test_can_score_a_strike
-    
+    @bowling_game.roll(10)
+    @bowling_game.roll(5)
+    @bowling_game.roll(4)
+    16.times{@bowling_game.roll(0)}
+    assert_equal(28, @bowling_game.score)
+  end
+
+  def test_can_score_two_strikes_in_a_row
+    @bowling_game.roll(10)
+    @bowling_game.roll(10)
+    @bowling_game.roll(5)
+    @bowling_game.roll(4)
+    14.times{@bowling_game.roll(0)}
+    assert_equal(53, @bowling_game.score)
   end
 
 
