@@ -26,9 +26,19 @@ class TestBowlingGame < Minitest::Test
     assert_equal(20, @bowling_game.score)
   end
 
+  def test_can_score_a_strike
+    
+  end
+
 
 # extension: test tenth frame
   def test_can_score_all_spares
+  end
+
+  def test_can_score_strike_in_tenth_frame
+  end
+
+  def test_can_score_all_strikes
   end
 
 end

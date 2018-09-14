@@ -14,14 +14,24 @@ class BowlingGame
     roll_index = 0
 
     10.times do
-      if @rolls[roll_index] + @rolls[roll_index + 1] == 10
-        score_log += @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
+      if spare?(roll_index)
+        score_log += spare_score(roll_index)
       else
         score_log += @rolls[roll_index] + @rolls[roll_index + 1] 
       end
       roll_index += 2
     end
     @score = score_log
+  end
+
+  private
+  def spare?(roll_index)
+    @rolls[roll_index] + @rolls[roll_index + 1] == 10
+  end
+
+  private
+  def spare_score(roll_index)
+    @rolls[roll_index] + @rolls[roll_index + 1] + @rolls[roll_index + 2]
   end
   
 end
