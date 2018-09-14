@@ -1,10 +1,15 @@
 class BowlingGame
-  def initialize()
 
+  def initialize()
+    @rolls = []
   end
-  
+
+  def roll(number_of_pins)
+    @rolls.push(number_of_pins)
+  end
+
   def score
-    2
+    @rolls.sum
   end
   
 end
