@@ -1,6 +1,6 @@
 class BowlingGame
 
-  def initialize()
+  def initialize
     @score = 0
     @rolls = []
   end
@@ -9,7 +9,7 @@ class BowlingGame
     @rolls.push(number_of_pins)
   end
 
-  def score()
+  def score
     score_log = 0
     roll_index = 0
 
@@ -33,13 +33,13 @@ class BowlingGame
   end
 
   private
-  def strike_score(roll_index)
-    @rolls[roll_index] + @rolls[roll_index + 2] + @rolls[roll_index + 3]
+  def insert_nil_after_strike(roll_index)
+    @rolls.insert(roll_index + 1, nil)
   end
 
   private
-  def insert_nil_after_strike(roll_index)
-    @rolls.insert(roll_index + 1, nil)
+  def strike_score(roll_index)
+    @rolls[roll_index] + @rolls[roll_index + 2] + @rolls[roll_index + 3]
   end
 
   private
